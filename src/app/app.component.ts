@@ -10,5 +10,10 @@ import {RouterLink, RouterLinkActive, RouterModule, RouterOutlet} from '@angular
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'demo';
+  actions : Array<any> = [
+    { title : 'Home' , routes : '/home' , icon :'bi-house'},
+    { title : 'Products' , routes : '/products' , icon :'bi-palette'},
+    { title : 'New products' , routes : '/newProduct' , icon :'bi-plus-circle'}
+  ]
+  isadmin = true
 }
