@@ -3,7 +3,12 @@
     @for (action of actions; track action) {
       
       <li >
-        <button   routerLink="{{action.routes}}" class="btn btn-outline-success ms-1">{{action.title}}
+        <button   
+        routerLink="{{action.routes}}" 
+        (click)="setCurrentAction(action)"
+        [class] = "action == currentAction ? 'btn btn-success ms-1' : 'btn btn-outline-success ms-1'"
+        >
+        {{action.title}}
           <i class="bi {{action.icon}}  "></i>
         </button>
       </li>

@@ -12,8 +12,12 @@ import {RouterLink, RouterLinkActive, RouterModule, RouterOutlet} from '@angular
 export class AppComponent {
   actions : Array<any> = [
     { title : 'Home' , routes : '/home' , icon :'bi-house'},
-    { title : 'Products' , routes : '/products' , icon :'bi-palette'},
+    { title : 'Products' , routes : '/products' , icon :'bi-search'},
     { title : 'New products' , routes : '/newProduct' , icon :'bi-plus-circle'}
   ]
-  isadmin = true
+  currentAction : any;
+
+  setCurrentAction (action : any){
+      this.currentAction=action;
+  }
 }
