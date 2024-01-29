@@ -1,22 +1,23 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
 export class ProductsComponent implements OnInit{
   products : Array<any> =[]
 
-  constructor( private http : HttpClient){
+  constructor( private productService : ProductService){
   
   }
 
   ngOnInit() {
-    this.http.get<Array<any>>('http://localhost:9090/api/produits')
+    this.productService.getProduct()
     .subscribe({
       next: data => {
         this.products = data
@@ -28,7 +29,7 @@ export class ProductsComponent implements OnInit{
   }
 
   handleCheckProduct(product : any){
-    this.http.patch<any>(`http://localhost:9090/api/modifierProduit/${product.id}`,{checked:!product.checked }).subscribe({
+    this.productService.checkProduct(product).subscribe({
       next : updateProduct =>{
         product.checked = !product.checked;
       },
