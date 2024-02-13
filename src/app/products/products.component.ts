@@ -1,6 +1,8 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
+import { Observable } from 'rxjs';
+import { Product } from '../model/product.model';
 
 @Component({
   selector: 'app-products',
@@ -10,22 +12,24 @@ import { ProductService } from '../services/product.service';
   styleUrl: './products.component.css'
 })
 export class ProductsComponent implements OnInit{
-  products : Array<any> =[]
+  products$! : Observable<Array<Product>>;
 
   constructor( private productService : ProductService){
   
   }
 
   ngOnInit() {
-    this.productService.getProduct()
-    .subscribe({
-      next: data => {
-        this.products = data
-      },
-      error : err =>{
-        console.log(err)
-      }
-    })
+    // this.productService.getProduct()
+    // .subscribe({
+    //   next: data => {
+    //     this.products = data
+    //   },
+    //   error : err =>{
+    //     console.log(err)
+    //   }
+    // })
+
+    this.products$ = this.productService.getProduct();
   }
 
   handleCheckProduct(product : any){

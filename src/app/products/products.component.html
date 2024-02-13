@@ -9,9 +9,9 @@
               <th>price</th>
               <th>checked</th>
           </tr>
-        </thead>
+        </thead>  
         <tbody>
-          @for (product of products; track product) {
+          @for  (product of products$ | async; track product ) {
             <tr>
               <th>{{product.id}}</th>
               <th>{{product.name}}</th>
@@ -22,6 +22,8 @@
                 </button>
               </th>
             </tr>
+          }@empty {
+            <p>No results yet!</p>
           }
         </tbody>
       </table>
