@@ -9,10 +9,9 @@
               <th>price</th>
               <th>checked</th>
           </tr>
-        </thead>  
+        </thead>
         <tbody>
-          @for  (product of products$ | async; track product ) {
-            <tr>
+            <tr *ngFor=" let product of products$ | async ">
               <th>{{product.id}}</th>
               <th>{{product.name}}</th>
               <th>{{product.price}}</th>
@@ -22,9 +21,6 @@
                 </button>
               </th>
             </tr>
-          }@empty {
-            <p>No results yet!</p>
-          }
         </tbody>
       </table>
     </div>

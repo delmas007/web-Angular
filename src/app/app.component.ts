@@ -10,6 +10,7 @@ import {RouterLink, RouterLinkActive, RouterModule, RouterOutlet} from '@angular
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
   actions : Array<any> = [
     { title : 'Home' , routes : '/home' , icon :'bi-house'},
     { title : 'Products' , routes : '/products' , icon :'bi-search'},

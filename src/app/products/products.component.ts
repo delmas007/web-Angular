@@ -3,11 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Observable } from 'rxjs';
 import { Product } from '../model/product.model';
+import {AsyncPipe, NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [],
+  imports: [
+    NgForOf,
+    AsyncPipe
+  ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
@@ -15,7 +19,7 @@ export class ProductsComponent implements OnInit{
   products$! : Observable<Array<Product>>;
 
   constructor( private productService : ProductService){
-  
+
   }
 
   ngOnInit() {
