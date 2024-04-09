@@ -17,6 +17,10 @@ export class ProductService {
   public checkProduct(product:Product,):Observable<Product>{
     return  this.http.patch<Product>(`http://localhost:9090/api/modifierProduit/${product.id}`,{checked:!product.checked })
   }
+
+  public deleteProduct(product:number,):Observable<Product>{
+    return  this.http.delete<Product>(`http://localhost:9090/api/supprimerProduit/${product}`)
+  }
 }
 
 

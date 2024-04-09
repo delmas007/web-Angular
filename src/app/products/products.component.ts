@@ -23,6 +23,9 @@ export class ProductsComponent implements OnInit{
   }
 
   ngOnInit() {
+   this.getProducts()
+  }
+  getProducts(){
     // this.productService.getProduct()
     // .subscribe({
     //   next: data => {
@@ -35,7 +38,6 @@ export class ProductsComponent implements OnInit{
 
     this.products$ = this.productService.getProduct();
   }
-
   handleCheckProduct(product : any){
     this.productService.checkProduct(product).subscribe({
       next : updateProduct =>{
@@ -45,5 +47,15 @@ export class ProductsComponent implements OnInit{
           console.log(err)
       }
     })
+}
+handleDeleteProduct(product : number){
+  this.productService.deleteProduct(product).subscribe({
+    next : data =>{
+      this.getProducts();
+    },
+    error : err =>{
+        console.log(err)
+    }
+  })
 }
 }
