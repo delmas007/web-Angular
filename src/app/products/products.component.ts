@@ -16,7 +16,8 @@ import {AsyncPipe, NgForOf} from "@angular/common";
   styleUrl: './products.component.css'
 })
 export class ProductsComponent implements OnInit{
-  products$! : Observable<Array<Product>>;
+  // products$! : Observable<Array<Product>>;
+  products : Array<Product> = [];
 
   constructor( private productService : ProductService){
 
@@ -26,17 +27,17 @@ export class ProductsComponent implements OnInit{
    this.getProducts()
   }
   getProducts(){
-    // this.productService.getProduct()
-    // .subscribe({
-    //   next: data => {
-    //     this.products = data
-    //   },
-    //   error : err =>{
-    //     console.log(err)
-    //   }
-    // })
+    this.productService.getProduct()
+    .subscribe({
+      next: data => {
+        this.products = data
+      },
+      error : err =>{
+        console.log(err)
+      }
+    })
 
-    this.products$ = this.productService.getProduct();
+    // this.products$ = this.productService.getProduct();
   }
   handleCheckProduct(product : any){
     this.productService.checkProduct(product).subscribe({
@@ -48,14 +49,16 @@ export class ProductsComponent implements OnInit{
       }
     })
 }
-handleDeleteProduct(product : number){
-  this.productService.deleteProduct(product).subscribe({
-    next : data =>{
-      this.getProducts();
-    },
-    error : err =>{
+handleDeleteProduct(product : number) {
+  if (confirm("voulez vous supprimer ce produit ?")) {
+    this.productService.deleteProduct(product).subscribe({
+      next: data => {
+        this.getProducts();
+      },
+      error: err => {
         console.log(err)
-    }
-  })
+      }
+    })
+  }
 }
 }
