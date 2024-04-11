@@ -4,13 +4,15 @@ import { ProductService } from '../services/product.service';
 import { Observable } from 'rxjs';
 import { Product } from '../model/product.model';
 import {AsyncPipe, NgForOf} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-products',
   standalone: true,
   imports: [
     NgForOf,
-    AsyncPipe
+    AsyncPipe,
+    FormsModule
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
@@ -18,6 +20,7 @@ import {AsyncPipe, NgForOf} from "@angular/common";
 export class ProductsComponent implements OnInit{
   // products$! : Observable<Array<Product>>;
   products : Array<Product> = [];
+  keyword: String = '';
 
   constructor( private productService : ProductService){
 
@@ -60,5 +63,17 @@ handleDeleteProduct(product : number) {
       }
     })
   }
+}
+
+  searchProducts() {
+    this.productService.searchProduct(this.keyword).subscribe({
+      next: data => {
+        this.products = data;
+      },
+      error: err => {
+        console.log(err)
+    }
+  }
+    )
 }
 }

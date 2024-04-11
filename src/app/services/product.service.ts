@@ -18,8 +18,17 @@ export class ProductService {
     return  this.http.patch<Product>(`http://localhost:9090/api/modifierProduit/${product.id}`,{checked:!product.checked })
   }
 
+  public searchProduct(keyword:String,):Observable<Array<Product>>{
+    return this.http.get<Array<Product>>(`http://localhost:9090/api/search/${keyword}`);
+  }
+
   public deleteProduct(product:number,):Observable<Product>{
     return  this.http.delete<Product>(`http://localhost:9090/api/supprimerProduit/${product}`)
+  }
+
+  saveProduct(product: Product) : Observable<Product> {
+    return this.http.post<Product>('http://localhost:9090/api/ajouterProduit', product);
+
   }
 }
 
