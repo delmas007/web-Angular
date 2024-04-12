@@ -30,6 +30,10 @@ export class ProductService {
     return this.http.post<Product>('http://localhost:9090/api/ajouterProduit', product);
 
   }
+
+  public getProductById(productId: number):Observable<Product>{
+    return this.http.get<Product>(`http://localhost:9090/api/produit/${productId}`);
+  }
 }
 
 
