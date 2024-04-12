@@ -14,15 +14,15 @@ export class ProductService {
     return this.http.get<Array<Product>>('http://localhost:9090/api/produits')
   }
 
-  public checkProduct(product:Product,):Observable<Product>{
-    return  this.http.patch<Product>(`http://localhost:9090/api/modifierProduit/${product.id}`,{checked:!product.checked })
+  public checkProduct(product:Product):Observable<Product>{
+      return  this.http.patch<Product>(`http://localhost:9090/api/modifierProduit/${product.id}`,{checked:!product.checked })
   }
 
-  public searchProduct(keyword:String,):Observable<Array<Product>>{
+  public searchProduct(keyword:String):Observable<Array<Product>>{
     return this.http.get<Array<Product>>(`http://localhost:9090/api/search/${keyword}`);
   }
 
-  public deleteProduct(product:number,):Observable<Product>{
+  public deleteProduct(product:number):Observable<Product>{
     return  this.http.delete<Product>(`http://localhost:9090/api/supprimerProduit/${product}`)
   }
 
