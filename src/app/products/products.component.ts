@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../model/product.model';
 import {AsyncPipe, NgForOf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-products',
@@ -22,7 +23,7 @@ export class ProductsComponent implements OnInit{
   products : Array<Product> = [];
   keyword: String = '';
 
-  constructor( private productService : ProductService){
+  constructor( private productService : ProductService, private router : Router){
 
   }
 
@@ -76,4 +77,9 @@ handleDeleteProduct(product : number) {
   }
     )
 }
+
+  handleEditProduct(product: Product) {
+    this.router.navigateByUrl(`/editProduct/${product.id}`)
+
+  }
 }
