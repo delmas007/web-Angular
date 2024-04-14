@@ -2,12 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../services/product.service";
 import {ActivatedRoute} from "@angular/router";
 import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {Product} from "../model/product.model";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-edit-product',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgIf
   ],
   templateUrl: './edit-product.component.html',
   styleUrl: './edit-product.component.css'
@@ -34,4 +37,17 @@ export class EditProductComponent implements OnInit{
       }
     })
     }
+  updateProduct(){
+    let product : Product = this.productFormGroup.value;
+    this.productService.updateProduct(product).subscribe({
+      next: data => {
+        alert(JSON.stringify(data));
+      },
+      error : err =>{
+        console.log(err)
+      }
+    })
   }
+  }
+
+

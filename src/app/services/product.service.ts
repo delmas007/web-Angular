@@ -34,6 +34,10 @@ export class ProductService {
   public getProductById(productId: number):Observable<Product>{
     return this.http.get<Product>(`http://localhost:9090/api/produit/${productId}`);
   }
+
+  public updateProduct(product:Product):Observable<Product>{
+    return  this.http.put<Product>(`http://localhost:9090/api/modifierPutProduit/${product.id}`,product)
+  }
 }
 
 
