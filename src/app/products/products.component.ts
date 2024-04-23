@@ -41,7 +41,7 @@ export class ProductsComponent implements OnInit{
       },
       error : err =>{
         this.state.status = 'ERROR';
-        this.state.errorMessage = err;
+        this.state.errorMessage = err.message;
 
       }
     })
