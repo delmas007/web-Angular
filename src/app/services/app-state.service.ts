@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AppStateService {
-
+  public status : String = '';
+  public errorMessage : String = '';
   constructor() { }
 }

@@ -10,5 +10,9 @@
         <i class="bi {{action.icon}}"></i>
       </button>
     </li>
+    <li *ngIf="state.status=='LOADING'">
+      <div class="spinner-border text-primary ms-3" role="status" >
+      </div>
+    </li>
   </ul>
 </nav>

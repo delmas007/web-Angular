@@ -6,6 +6,7 @@ import { Product } from '../model/product.model';
 import {AsyncPipe, NgForOf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
+import {AppStateService} from "../services/app-state.service";
 
 @Component({
   selector: 'app-products',
@@ -23,7 +24,7 @@ export class ProductsComponent implements OnInit{
   products : Array<Product> = [];
   keyword: String = '';
 
-  constructor( private productService : ProductService, private router : Router){
+  constructor( private productService : ProductService, private router : Router, private state : AppStateService){
 
   }
 
@@ -31,13 +32,17 @@ export class ProductsComponent implements OnInit{
    this.getProducts()
   }
   getProducts(){
+    this.state.status = 'LOADING';
     this.productService.getProduct()
     .subscribe({
       next: data => {
         this.products = data
+        this.state.status = 'LOADED';
       },
       error : err =>{
-        console.log(err)
+        this.state.status = 'ERROR';
+        this.state.errorMessage = err;
+
       }
     })
 
