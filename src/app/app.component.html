@@ -1,34 +1,4 @@
-<nav class="p-3">
-  <ul class="nav nav-pills">
-<!--    @for (action of actions; track action) {-->
-
-<!--      <li >-->
-<!--        <button-->
-<!--        routerLink="{{action.routes}}"-->
-<!--        (click)="setCurrentAction(action)"-->
-<!--        [class] = "action == currentAction ? 'btn btn-success ms-1' : 'btn btn-outline-success ms-1'"-->
-<!--        >-->
-<!--        {{action.title}}-->
-<!--          <i class="bi {{action.icon}}  "></i>-->
-<!--        </button>-->
-<!--      </li>-->
-<!--    }-->
-    <nav class="p-3">
-      <ul class="nav nav-pills">
-        <li *ngFor="let action of actions">
-          <button
-            routerLink="{{action.routes}}"
-            (click)="setCurrentAction(action)"
-            [class]="action == currentAction ? 'btn btn-success ms-1' : 'btn btn-outline-success ms-1'"
-          >
-            {{action.title}}
-            <i class="bi {{action.icon}}"></i>
-          </button>
-        </li>
-      </ul>
-    </nav>
-  </ul>
-</nav>
+<app-navbar></app-navbar>
 
 <app-dashboard></app-dashboard>
 <router-outlet>
