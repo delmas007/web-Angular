@@ -32,7 +32,6 @@ export class ProductsComponent implements OnInit{
    this.getProducts()
   }
   getProducts(){
-    this.state.status = 'LOADING';
     this.productService.getProduct()
     .subscribe({
       next: data => {
