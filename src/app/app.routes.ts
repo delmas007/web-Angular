@@ -4,12 +4,18 @@ import {ProductsComponent} from "./products/products.component";
 import {NewProductComponent} from "./new-product/new-product.component";
 import {EditProductComponent} from "./edit-product/edit-product.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {LoginComponent} from "./login/login.component";
+import {AdminTemplateComponent} from "./admin-template/admin-template.component";
 
 export const routes: Routes = [
+  { path : "login" , component : LoginComponent},
+  { path : "admin" , component : AdminTemplateComponent, children : [
+      { path : "products" , component : ProductsComponent},
+      { path : "newProduct" , component : NewProductComponent},
+      { path : "editProduct/:id" , component : EditProductComponent},
+    ]
+  },
   { path : "home" , component : HomeComponent},
   { path : "dashboard" , component : DashboardComponent},
-  { path : "products" , component : ProductsComponent},
-  { path : "newProduct" , component : NewProductComponent},
-  { path : "editProduct/:id" , component : EditProductComponent},
-  { path : "" , redirectTo : "/home", pathMatch : "full"}
+  { path : "" , redirectTo : "/login", pathMatch : "full"}
 ];
