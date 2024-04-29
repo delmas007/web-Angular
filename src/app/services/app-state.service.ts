@@ -6,5 +6,18 @@ import { Injectable } from '@angular/core';
 export class AppStateService {
   public status : String = '';
   public errorMessage : String = '';
+
+  public authState : any = {
+    isAuthenticated : false,
+    user : undefined,
+    role : undefined,
+    token : undefined
+  }
   constructor() { }
+
+  public setAuthState(state : any){
+    this.authState = {...this.authState, ...state};
+  }
+
+
 }
