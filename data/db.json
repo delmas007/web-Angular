@@ -1,8 +1,20 @@
 {
-    "products" : [
-        {"id" : 1 , "name" : "pc" , "price" : 250000, "checked" : false},
-        {"id" : 2 , "name" : "climatiseur" , "price" : 120000, "checked" : true},
-        {"id" : 3 , "name" : "phone" , "price" : 350000, "checked" : false}
+    "users" : [
+        {"id" : "user1",
+          "password" : "1234",
+          "roles" : ["USER"],
+          "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMSIsImZpcnN0bmFtZSI6IkFuZ2FtYW4iLCJsYXN0bmFtZSI6ImRlbG1hcyIsImVtYWlsIjoiYW5nYW1hbmRlbG1hc0BnbWFpbC5jb20iLCJpYXQiOjE1MTYyMzkwMjIsInJvbGVzIjpbIlVTRVIiXX0.JyPTi-Q7QChVsNmWG7HR0FIJzmV0HPwkVjdSKz0wqEY"
+        },
+      {"id" : "user2",
+        "password" : "1234",
+        "roles" : ["USER"],
+        "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMiIsImZpcnN0bmFtZSI6IkFuZ2FtYW4iLCJsYXN0bmFtZSI6ImRlbG1hcyIsImVtYWlsIjoiYW5nYW1hbmRlbG1hc0BnbWFpbC5jb20iLCJpYXQiOjE1MTYyMzkwMjIsInJvbGVzIjpbIlVTRVIiXX0.XZP6YX-TgeP3-QmSMqeC8HZJU2OM939eOyzGnD5nFRI"
+      },
+      {"id" : "admin",
+        "password" : "1234",
+        "roles" : ["USER","ADMIN"],
+        "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImZpcnN0bmFtZSI6IkFuZ2FtYW4iLCJsYXN0bmFtZSI6ImRlbG1hcyIsImVtYWlsIjoiYW5nYW1hbmRlbG1hc0BnbWFpbC5jb20iLCJpYXQiOjE1MTYyMzkwMjIsInJvbGVzIjpbIlVTRVIiLCJBRE1JTiJdfQ.WZnKMVD9RVysOxz3fJjy4Qx2GZXiaSOgYoRQXDaO1Uo"
+      }
     ]
-    
+
 }
