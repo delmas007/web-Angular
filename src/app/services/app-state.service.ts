@@ -9,7 +9,7 @@ export class AppStateService {
 
   public authState : any = {
     isAuthenticated : false,
-    user : undefined,
+    username : undefined,
     role : undefined,
     token : undefined
   }

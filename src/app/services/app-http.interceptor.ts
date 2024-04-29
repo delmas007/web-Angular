@@ -8,7 +8,7 @@ export const appHttpInterceptor: HttpInterceptorFn = (req, next) => {
   a.status = 'LOADING';
   let reqUrl = req.clone({
     // headers : req.headers.set('Authorization', 'Bearer ' + localStorage.getItem('token'))
-    headers : req.headers.set('Authorization', 'Bearer JWT_TOKEN')
+    // headers : req.headers.set('Authorization', 'Bearer JWT_TOKEN')
   })
   return next(reqUrl).pipe(
     finalize(() => {
