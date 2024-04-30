@@ -1,5 +1,21 @@
-import { CanActivateFn } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AppStateService } from "../services/app-state.service";
 
-export const authorizationGuard: CanActivateFn = (route, state) => {
-  return true;
-};
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthorizationGuard {
+  constructor(private appStateService: AppStateService) {}
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+      if (this.appStateService.authState.role.includes('ADMIN')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
