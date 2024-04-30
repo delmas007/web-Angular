@@ -7,7 +7,7 @@ import { AppStateService } from "../services/app-state.service";
   providedIn: 'root'
 })
 export class AuthorizationGuard {
-  constructor(private appStateService: AppStateService) {}
+  constructor(private appStateService: AppStateService,private router : Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -15,6 +15,7 @@ export class AuthorizationGuard {
       if (this.appStateService.authState.role.includes('ADMIN')) {
       return true;
     } else {
+        this.router.navigateByUrl("/admin/notAuthorized");
       return false;
     }
   }
