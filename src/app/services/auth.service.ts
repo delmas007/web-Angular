@@ -18,12 +18,14 @@ export class AuthService {
     console.log(atob(user.password));
     if (password == atob(user.password)){
       let decodedJwt : any = jwtDecode(user.token);
+      console.log(decodedJwt.sub);
       this.appState.setAuthState({
         isAuthenticated: true,
         username: decodedJwt.sub,
         role: decodedJwt.roles,
         token: user.token
       });
+      console.log(this.appState.authState);
       return Promise.resolve(true);
       } else {
         return Promise.reject("Bad credentials");

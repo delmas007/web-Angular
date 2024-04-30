@@ -1,4 +1,4 @@
-<nav class="p-3">
+<nav class="p-3 navbar" >
   <ul class="nav nav-pills">
     <li *ngFor="let action of actions">
       <button
@@ -14,5 +14,13 @@
       <div class="spinner-border text-primary ms-3" role="status" >
       </div>
     </li>
+  </ul>
+  <ul class="nav nav-pills">
+    <li *ngIf="state.authState.isAuthenticated">
+        {{state.authState.username}}
+        <button (click)="logout()" class="btn btn-success ">logout</button>
+    </li>
+    <li *ngIf="!state.authState.isAuthenticated">
+      <button routerLink="/login" class="btn btn-success ">login</button>
   </ul>
 </nav>

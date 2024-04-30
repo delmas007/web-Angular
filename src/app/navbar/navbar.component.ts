@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {AppStateService} from "../services/app-state.service";
 
 @Component({
@@ -22,10 +22,16 @@ export class NavbarComponent {
   ]
   currentAction : any;
 
-  constructor(public state : AppStateService){
+  constructor(public state : AppStateService,private router:Router){
   }
 
   setCurrentAction (action : any){
     this.currentAction=action;
+  }
+
+  logout() {
+    this.state.authState = {}
+    this.router.navigate(['/login']);
+    console.log(this.state.authState);
   }
 }
