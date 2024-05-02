@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Observable } from 'rxjs';
 import { Product } from '../model/product.model';
-import {AsyncPipe, NgForOf} from "@angular/common";
+import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AppStateService} from "../services/app-state.service";
@@ -14,7 +14,8 @@ import {AppStateService} from "../services/app-state.service";
   imports: [
     NgForOf,
     AsyncPipe,
-    FormsModule
+    FormsModule,
+    NgIf
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
@@ -24,7 +25,7 @@ export class ProductsComponent implements OnInit{
   products : Array<Product> = [];
   keyword: String = '';
 
-  constructor( private productService : ProductService, private router : Router, private state : AppStateService){
+  constructor( private productService : ProductService, private router : Router, public state : AppStateService){
 
   }
 
