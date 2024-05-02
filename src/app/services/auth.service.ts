@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   loadToken() {
-    const token = localStorage.getItem('token');
+    const token = localStorage!.getItem('token');
     if (token) {
       console.log("Token found")
       const decodedJwt: any = jwtDecode(token);
