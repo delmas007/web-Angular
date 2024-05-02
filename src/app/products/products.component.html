@@ -13,9 +13,9 @@
               <th>id</th>
               <th>name</th>
               <th>price</th>
-              <th *ngIf="state.authState.role.includes('ADMIN')">checked</th>
-              <th *ngIf="state.authState.role.includes('ADMIN')">edit</th>
-              <th *ngIf="state.authState.role.includes('ADMIN')">delete</th>
+              <th *ngIf="authService.authState.role.includes('ADMIN')">checked</th>
+              <th *ngIf="authService.authState.role.includes('ADMIN')">edit</th>
+              <th *ngIf="authService.authState.role.includes('ADMIN')">delete</th>
           </tr>
         </thead>
         <tbody>
@@ -23,17 +23,17 @@
               <th>{{product.id}}</th>
               <th>{{product.name}}</th>
               <th>{{product.price}}</th>
-              <th *ngIf="state.authState.role.includes('ADMIN')">
+              <th *ngIf="authService.authState.role.includes('ADMIN')">
                 <button (click)="handleCheckProduct(product)" class="btn btn-outline-success">
                   <i [class] ="product.checked ? 'bi bi-check':'bi bi-circle'"></i>
                 </button>
               </th>
-              <th *ngIf="state.authState.role.includes('ADMIN')">
+              <th *ngIf="authService.authState.role.includes('ADMIN')">
                 <button (click)="handleEditProduct(product)" class="btn btn-outline-primary">
                   <i class="bi bi-pencil"></i>
                 </button>
               </th>
-              <th *ngIf="state.authState.role.includes('ADMIN')">
+              <th *ngIf="authService.authState.role.includes('ADMIN')">
                 <button (click)="handleDeleteProduct(product.id)" class="btn btn-outline-danger">
                   <i class="bi bi-trash"></i>
                 </button>

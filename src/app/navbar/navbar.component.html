@@ -16,11 +16,11 @@
     </li>
   </ul>
   <ul class="nav nav-pills">
-    <li *ngIf="state.authState.isAuthenticated">
-        {{state.authState.username}}
+    <li *ngIf="authService.authState.isAuthenticated">
+        {{authService.authState.username}}
         <button (click)="logout()" class="btn btn-success ">logout</button>
     </li>
-    <li *ngIf="!state.authState.isAuthenticated">
+    <li *ngIf="!authService.authState.isAuthenticated">
       <button routerLink="/login" class="btn btn-success ">login</button>
   </ul>
 </nav>

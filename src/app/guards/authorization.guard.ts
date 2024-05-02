@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, Routes} from '@angular/router';
 import { Observable } from 'rxjs';
-import { AppStateService } from "../services/app-state.service";
+import {AuthService} from "../services/auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationGuard {
-  constructor(private appStateService: AppStateService,private router : Router) {}
+  constructor(private authService: AuthService,private router : Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if (this.appStateService.authState.role.includes(route.data['roles'])) {
+      if (this.authService.authState.role.includes(route.data['roles'])) {
       return true;
     } else {
         this.router.navigateByUrl("/admin/notAuthorized");

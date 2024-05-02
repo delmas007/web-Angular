@@ -7,6 +7,7 @@ import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AppStateService} from "../services/app-state.service";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-products',
@@ -25,7 +26,7 @@ export class ProductsComponent implements OnInit{
   products : Array<Product> = [];
   keyword: String = '';
 
-  constructor( private productService : ProductService, private router : Router, public state : AppStateService){
+  constructor( private productService : ProductService, private router : Router, public state : AppStateService,public authService: AuthService){
 
   }
 

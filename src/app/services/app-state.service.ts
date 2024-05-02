@@ -7,17 +7,17 @@ export class AppStateService {
   public status : String = '';
   public errorMessage : String = '';
 
-  public authState : any = {
-    isAuthenticated : false,
-    username : undefined,
-    role : undefined,
-    token : undefined
-  }
+  // public authState : any = {
+  //   isAuthenticated : false,
+  //   username : undefined,
+  //   role : undefined,
+  //   token : undefined
+  // }
   constructor() { }
 
-  public setAuthState(state : any){
-    this.authState = {...this.authState, ...state};
-  }
+  // public setAuthState(state : any){
+  //   this.authState = {...this.authState, ...state};
+  // }
 
 
 }
